@@ -1,0 +1,48 @@
+define(['getNode'], function(getNode){
+	
+	function main(env, opt, file){
+
+		var $set = {
+				targetNode: null,
+				targetClass: null,
+				thisClass: 'is-active',
+				btnText: null,
+				debug: false
+			}
+
+		$.extend($set, opt);
+
+		var _eventNmae = file; //事件名稱
+
+		var $env = $(env),
+			$target = getNode.getHd(env).find('a');
+
+		$target.on(_eventNmae, function(){
+			$env.toggleClass($set.thisClass);
+		});
+
+		$target.on('click', function(evt){ //觸發事件
+			evt.preventDefault();
+
+			$(this).trigger(_eventNmae);
+		});
+		
+		$target.on('keydown', function(evt){
+
+			var _enter_key = 13;
+
+			if( evt.which === _enter_key ) {
+				evt.preventDefault();
+
+				$(this).trigger(_eventNmae);
+			}
+		});
+
+		if($set.debug) {
+			console.log('預設值:', $set);
+			console.log('檔案 '+ file +'.js 已順利執行。');
+		}
+	}
+	
+	return main;
+});

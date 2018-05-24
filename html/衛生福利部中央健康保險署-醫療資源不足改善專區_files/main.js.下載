@@ -1,0 +1,4 @@
+define(function(){return function(){function Func($env,_file,$opt){this.env=$env;this.file=_file;this.opt=$opt||{};}Func.prototype.run=function(){var $env=this.env,_file=this.file,$opt=this.opt;requirejs([_file],function(func){if(typeof(func)==='function'){func($env,$opt,_file);}else{console.log(_file+'.js 並不是一個可執行的 function.')
+return false;}});}
+Func.prototype.log=function(){console.log('環境:',this.env);console.log('參數:',this.opt);console.log('檔名:',this.file);console.log('===============================');}
+var _attrName='data-func',new_attrName='data-funclog';var $nodes=document.querySelectorAll('['+_attrName+']'),$nodes_length=$nodes.length;for(var i=0;i<$nodes_length;i++){var $env=$nodes[i],_func=$env.getAttribute(_attrName),$func=JSON.parse(_func.replace(/\'/g,'"'));$env.removeAttribute(_attrName);$env.setAttribute(new_attrName,_func);for(var _file in $func){var $opt=$func[_file];var $obj=new Func($env,_file,$opt);$obj.run();}}}});

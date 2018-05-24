@@ -1,0 +1,79 @@
+﻿function LoadFont() {
+        var fontsize;
+        if (readCookie('fontsizeA') == null) {
+            createCookie('fontsizeA', 'font', 30);
+        } else {
+            
+            fontsize = readCookie('fontsizeA');
+            $('.bigfont').removeClass('ative');
+            $('.font').removeClass('ative');
+            $('.smallfont').removeClass('ative');
+            if (fontsize == "bigfont")
+            {
+                $('.bigfont').addClass('ative');
+                $('.wrapper').css({ "font-size": "110%" });     
+            }
+            if (fontsize == "font") {
+                $('.font').addClass('ative');
+                $('.wrapper').css({ "font-size": "100%" });
+            }
+            if (fontsize == "smallfont") {
+                $('.smallfont').addClass('ative');
+                $('.wrapper').css({ "font-size": "90%" });
+            }
+            
+        }
+
+    }
+function LoadPC_Mobile() {
+    if (readCookie('IsNoRWD') == null) { $("#mobile_btn").css({ "display": "none" });}
+    if (readCookie('IsNoRWD') == "false") { $("#mobile_btn").css({ "display": "none" });}
+    if (readCookie('IsNoRWD') == "true") {
+        $("#viewport").attr("content", " ");
+        $("#pc_btn").css({ "display": "none" });
+        $("#PageBody").removeClass('side-right');
+        $("#mobile_btn").css({ "display": "inline-block" });
+        $(".wrapper").addClass('pcbox');
+       
+    }
+}
+
+function createCookie(name, value, days) {
+    
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+    }
+    else expires = "";
+    //document.cookie = name + "=" + value + expires + ";domain=.president.gov.tw;path=/";
+    document.cookie = name + "=" + value + expires + ";path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ')
+            c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0)
+            return c.substring(nameEQ.length, c.length);
+    }
+
+    return null;
+}
+
+function SetFont(size) {
+    createCookie('fontsizeA', size, 30);
+    LoadFont();
+}
+$(document).ready(function () {
+
+    // 使用者字型大小   
+    LoadFont();
+
+    // 使用者PC_Mobile   
+    LoadPC_Mobile();
+});
+

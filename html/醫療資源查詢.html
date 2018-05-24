@@ -1,0 +1,769 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0052)https://wellness.hpa.gov.tw/App_Prog/MedicalMap.aspx -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW" class="gr__wellness_hpa_gov_tw"><head id="Head1"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.gm-style .gm-style-mtc label,.gm-style .gm-style-mtc div{font-weight:400}
+</style><style type="text/css">.gm-style .gm-style-cc span,.gm-style .gm-style-cc a,.gm-style .gm-style-mtc div{font-size:10px}
+</style><style type="text/css">@media print {  .gm-style .gmnoprint, .gmnoprint {    display:none  }}@media screen {  .gm-style .gmnoscreen, .gmnoscreen {    display:none  }}</style><style type="text/css">.gm-style .gm-style-iw{font-weight:300;font-size:13px;overflow:hidden}.gm-style .gm-iw{color:#2c2c2c}.gm-style .gm-iw b{font-weight:400}.gm-style .gm-iw a:link,.gm-style .gm-iw a:visited{color:#4272db;text-decoration:none}.gm-style .gm-iw a:hover{color:#4272db;text-decoration:underline}.gm-style .gm-iw .gm-title{font-weight:400;margin-bottom:1px}.gm-style .gm-iw .gm-basicinfo{line-height:18px;padding-bottom:12px}.gm-style .gm-iw .gm-website{padding-top:6px}.gm-style .gm-iw .gm-photos{padding-bottom:8px;-ms-user-select:none;-moz-user-select:none;-webkit-user-select:none}.gm-style .gm-iw .gm-sv,.gm-style .gm-iw .gm-ph{cursor:pointer;height:50px;width:100px;position:relative;overflow:hidden}.gm-style .gm-iw .gm-sv{padding-right:4px}.gm-style .gm-iw .gm-wsv{cursor:pointer;position:relative;overflow:hidden}.gm-style .gm-iw .gm-sv-label,.gm-style .gm-iw .gm-ph-label{cursor:pointer;position:absolute;bottom:6px;color:#fff;font-weight:400;text-shadow:rgba(0,0,0,0.7) 0 1px 4px;font-size:12px}.gm-style .gm-iw .gm-stars-b,.gm-style .gm-iw .gm-stars-f{height:13px;font-size:0}.gm-style .gm-iw .gm-stars-b{position:relative;background-position:0 0;width:65px;top:3px;margin:0 5px}.gm-style .gm-iw .gm-rev{line-height:20px;-ms-user-select:none;-moz-user-select:none;-webkit-user-select:none}.gm-style.gm-china .gm-iw .gm-rev{display:none}.gm-style .gm-iw .gm-numeric-rev{font-size:16px;color:#dd4b39;font-weight:400}.gm-style .gm-iw.gm-transit{margin-left:15px}.gm-style .gm-iw.gm-transit td{vertical-align:top}.gm-style .gm-iw.gm-transit .gm-time{white-space:nowrap;color:#676767;font-weight:bold}.gm-style .gm-iw.gm-transit img{width:15px;height:15px;margin:1px 5px 0 -20px;float:left}
+.gm-iw {text-align:left;}.gm-iw .gm-numeric-rev {float:left;}.gm-iw .gm-photos,.gm-iw .gm-rev {direction:ltr;}.gm-iw .gm-stars-f, .gm-iw .gm-stars-b {background:url("https://maps.gstatic.com/mapfiles/api-3/images/review_stars.png") no-repeat;background-size: 65px 26px;float:left;}.gm-iw .gm-stars-f {background-position:left -13px;}.gm-iw .gm-sv-label,.gm-iw .gm-ph-label {left: 4px;}</style><link type="text/css" rel="stylesheet" href="./醫療資源查詢_files/css"><style type="text/css">.gm-style-pbc{transition:opacity ease-in-out;background-color:rgba(0,0,0,0.45);text-align:center}.gm-style-pbt{font-size:22px;color:white;font-family:Roboto,Arial,sans-serif;position:relative;margin:0;top:50%;-webkit-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}
+</style><title>醫療資源查詢</title><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache"><meta name="viewport" content="width=device-width, initial-scale=1"><link href="./醫療資源查詢_files/reset.css" rel="stylesheet" type="text/css"><link href="./醫療資源查詢_files/font-awesome.css" rel="stylesheet"><link href="./醫療資源查詢_files/bootstrap.css" rel="stylesheet" type="text/css"><link href="./醫療資源查詢_files/main.css" rel="stylesheet" type="text/css"><link href="./醫療資源查詢_files/responsive.css" rel="stylesheet" type="text/css"><link href="./醫療資源查詢_files/map.css" rel="stylesheet" type="text/css"><link rel="shortcut icon" href="https://wellness.hpa.gov.tw/images/favicon.ico" type="image/x-icon">
+  
+    <script type="text/javascript" src="./醫療資源查詢_files/jquery-1.11.1.js.下載"></script>
+    <script type="text/javascript" src="./醫療資源查詢_files/bootstrap.min.js.下載"></script>
+    <script type="text/javascript" src="./醫療資源查詢_files/js"></script>
+
+    <script type="text/javascript">
+        var map, marker;
+        var markers = {};
+        var infowindow = null;
+        var nowlatitude;
+        var nowlongitude;
+
+        var initialLocation;
+        var taipei = new google.maps.LatLng(25.09108, 121.5598);
+        var browserSupportFlag = new Boolean();
+
+        function GetLocNumber() {
+            var myOptions = {
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+            // Try W3C Geolocation (Preferred)
+            if (navigator.geolocation) {
+                browserSupportFlag = true;
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    nowlatitude = position.coords.latitude;
+                    nowlongitude = position.coords.longitude;
+                    addMarker(nowlatitude, nowlongitude, "目前位置", "目前位置", "00A", "目前位置", "目前位置", "目前位置");
+                    displayMarker("00A");
+                }, function () {
+                });
+            }
+            // Browser doesn't support Geolocation
+
+        }
+
+        $(function ($) {
+            $('#map').height($(window).height() - 125 - 51);
+            $('#listbox').height($(window).height() - 196 - 51 - 30);
+            GetLocNumber();
+            initMap();
+        });
+
+        function initMap() {
+            var myOptions = {
+                zoom: 7,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("map"), myOptions);
+            var pos = new google.maps.LatLng(23.748508, 120.941581);
+            map.setCenter(pos);
+        }
+
+
+
+        function QueryData() {
+            var TownID = $.trim($('#ddlTownID option:selected').val());
+            var CountyID = $.trim($('#ddlCountyID option:selected').val());
+            var ServiceOrg = $.trim($('#ddlServiceOrg option:selected').val());
+
+            var ServiceCode = $.trim($('#ddlServiceCode option:selected').val());
+            var FuncType = $.trim($('#ddlFuncType option:selected').val());
+            var SpecialType = $.trim($('#ddlSpecialType option:selected').val());
+            var key = $.trim($('#txtKey').val().replace('輸入機構名稱', ''));
+            $.ajax({
+                type: "POST",
+                url: "MedicalMap.aspx/GetOrgInfo",
+                data: "{'CountyID':'" + CountyID + "','TownID':'" + TownID + "','SpecialType':'" + SpecialType + "','ServiceCode':'" + ServiceCode + "','FuncType':'" + FuncType + "','Key':'" + key + "','ServiceOrg':'" + ServiceOrg + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    initMap();
+                    var j = 0;
+                    if (data.d != "") {
+                        $.each(data, function (d, item) {
+                            var json = jQuery.parseJSON(item);
+                            $.each(json, function (i, nav) {
+                                var lat = nav.Latitude;
+                                var long = nav.Longitude;
+                                var contentString = '<div id="content">' +
+                                '<p><strong>' + $.trim(nav.OrgName) + '</strong></p>' +
+                                '<p>地址：' + $.trim(nav.Address) + '</p>' +
+                                '<p>洽詢專線：' + $.trim(nav.ContactTel) + '</p>';
+                                if ($.trim(nav.ServiceName) != "") {
+                                    contentString = contentString + '<p>免費健康檢查服務：' + $.trim(nav.ServiceName) + '</p>';
+                                }
+                                contentString = contentString + '<p>更新日期：' + $.trim(nav.Org_UP_DATE) + '</p>';
+
+                                if (lat != null && long != null) {
+                                    addMarker(lat, long, contentString, nav.OrgName, nav.OrgID, nav.ContactTel, nav.Address, nav.ServiceName);
+                                }
+                                //if (j == 0) {
+                                //    addMarker(nowlatitude, nowlongitude, "目前位置", "目前位置", "00A", "目前位置", "目前位置", "目前位置");
+                                //}
+
+                                j = j + 1;
+                            });
+                        })
+                        bindtable();
+                        map.setZoom(15);
+                        displayMarker("00A");
+                    }
+                    $('#lblCount').html(j);
+                },
+                error: function (msg) {
+                    //alert(msg.responseText);
+                }
+            });
+        }
+
+        function addMarker(lati, longi, content, name, id, tel, address, ServiceName) {
+            var image = new google.maps.MarkerImage("../images/mapicon4.png", new google.maps.Size(28, 35));
+            var location = new google.maps.LatLng(lati, longi);
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                id: id,
+                icon: image
+            });
+            map.setCenter(location);
+
+            marker.infowindow = new google.maps.InfoWindow({
+                content: content
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                if (infowindow) {
+                    infowindow.close();
+                }
+                infowindow = marker.infowindow;
+                infowindow.open(map, this);
+            });
+
+            markers[id] = marker;
+        }
+
+        function displayMarker(id) {
+            if (infowindow) {
+                infowindow.close();
+            }
+
+            if (markers[id] != undefined) {
+                var data = markers[id];
+
+                infowindow = data.infowindow;
+                infowindow.open(map, data);
+                map.panTo(data.position);
+                map.setCenter(data.position);
+
+            }
+        }
+
+        function bindtable() {
+            $(".listbox .list").click(function (e) {
+                var Index = $(this).closest("div")[0].id;
+                displayMarker(Index);
+            });
+        }
+
+        function mainPageLoad() {
+            $('#listbox').height($(window).height() - 196 - 51 - 30);
+            bindtable();
+        }
+
+    </script>
+    <style type="text/css">
+         body {
+       background-image: none !important;
+       overflow-x: hidden;
+         overflow-x: hidden;
+            }
+
+
+        #header {
+    height: 97px;
+    border-top: 0px solid #D8E78A !important;
+    padding: 0%!important;
+}
+
+
+        .UpdateProgress
+        {
+            z-index: 100002 !important;
+            background-color: White;
+        }
+        #content
+        {
+         width : 250px;
+        }
+          .qrStyle{
+      width:50%;
+       height:50%;
+       }
+        .section-margine {
+         margin: 0px 0 0 0!important;
+        }
+
+        #center .contentA .Rbox {
+            float: right;
+            width: 100%;
+        }
+
+         #content {background: rgb(246,246,246); }
+    .navbar-brandImg{ height: 45px; margin-top: 6px; max-height: 100%; max-width: 100%;}
+    #txtUserAccount::-webkit-input-placeholder, #txtUserPW::-webkit-input-placeholder{color:antiquewhite;}
+    #login .login-from {
+            background: rgb(143, 169, 43);
+        }
+    @media only screen and (min-width: 1201px){
+        #login .login-from {
+            background: rgb(143, 169, 43);
+        }
+    }
+   
+    body {
+      
+       overflow-x: hidden;
+    }
+
+    .six-footInfo{
+       background: #fff;
+    }
+    .tile.green{
+       background: rgb(143, 169, 43); border-radius: 10px;
+    }
+    .navbar-1{
+       background-image: url("../images/navbarbg_leaf.jpg");
+       background-size: 100vw auto; 
+       background-repeat: no-repeat;
+       background-position:top right;
+    }
+    
+
+    #UpdatePanel2{
+         margin-top:60px;
+        }
+
+            
+    }
+    </style>
+<script type="text/javascript" charset="UTF-8" src="./醫療資源查詢_files/common.js.下載"></script><script type="text/javascript" charset="UTF-8" src="./醫療資源查詢_files/util.js.下載"></script><script type="text/javascript" charset="UTF-8" src="./醫療資源查詢_files/map.js.下載"></script><script type="text/javascript" charset="UTF-8" src="./醫療資源查詢_files/marker.js.下載"></script><script type="text/javascript" charset="UTF-8" src="./醫療資源查詢_files/infowindow.js.下載"></script><style type="text/css">.gm-style {
+        font: 400 11px Roboto, Arial, sans-serif;
+        text-decoration: none;
+      }
+      .gm-style img { max-width: none; }</style><script type="text/javascript" charset="UTF-8" src="./醫療資源查詢_files/onion.js.下載"></script><script type="text/javascript" charset="UTF-8" src="./醫療資源查詢_files/controls.js.下載"></script><script type="text/javascript" charset="UTF-8" src="./醫療資源查詢_files/stats.js.下載"></script><script type="text/javascript">mainPageLoad();</script><script type="text/javascript">mainPageLoad();</script><script type="text/javascript">QueryData();</script><script type="text/javascript">mainPageLoad();</script><script type="text/javascript" charset="UTF-8" src="./醫療資源查詢_files/QuotaService.RecordEvent"></script></head>
+<body data-gr-c-s-loaded="true">
+    <form method="post" action="https://wellness.hpa.gov.tw/App_Prog/MedicalMap.aspx" id="form1">
+<div class="aspNetHidden">
+
+
+
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="./醫療資源查詢_files/WebResource.axd" type="text/javascript"></script>
+
+
+<script src="./醫療資源查詢_files/ScriptResource.axd" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+if (typeof(Sys) === 'undefined') throw new Error('ASP.NET Ajax 用戶端架構無法載入。');
+//]]>
+</script>
+
+<script src="./醫療資源查詢_files/ScriptResource(1).axd" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	
+	
+	
+</div>
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'form1', ['tUpdatePanel2','UpdatePanel2','tUpdatePanel1','UpdatePanel1'], ['btnQuery','btnQuery'], [], 90, '');
+//]]>
+</script>
+
+        <header id="header">
+        <nav class="navbar navbar-default navbar-1">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="https://www.hpa.gov.tw/home/index.aspx">
+     
+
+            <div class="logo-text"><img src="./醫療資源查詢_files/logo.png" alt="logo" class="navbar-brandImg"></div>
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-hover="dropdown" data-animations="fadeIn">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="https://wellness.hpa.gov.tw/App_Prog/About.aspx">關於我們</a></li>
+          <li><a href="https://wellness.hpa.gov.tw/App_Prog/HealthBody.aspx">健康小百科</a></li>
+          <li><a href="https://wellness.hpa.gov.tw/App_Prog/MemberManagerMG.aspx?Type=MG">會員專區 </a></li>
+       
+           <li><a href="https://wellness.hpa.gov.tw/Index.aspx">回首頁</a></li>
+            <li><a href="https://wellness.hpa.gov.tw/Logout.aspx">登出</a></li>
+           <li id="Li1"><a href="https://fushinchat.mybluemix.net/" target="_blank">線上客服</a></li>
+          <li><div class="search"><iframe allowtransparency="true" title="Google Search" width="180" height="25" frameborder="0" marginheight="0" marginwidth="0" src="./醫療資源查詢_files/GoogleSearch.html" scrolling="no"></iframe></div></li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+    </header>
+        <section id="content2" class="section-margine">
+        <div class="container">
+	        <div class="row">
+		        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+			        <div class="row">
+				        <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                            <div id="UpdatePanel2">
+                                    <div class="r2">
+                                        <div class="r3">
+                                            <select name="ddlCountyID" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ddlCountyID\&#39;,\&#39;\&#39;)&#39;, 0)" id="ddlCountyID">
+	<option value="">-------</option>
+	<option value="01">臺北市</option>
+	<option value="03">臺中市</option>
+	<option value="05">臺南市</option>
+	<option value="07">高雄市</option>
+	<option value="11">基隆市</option>
+	<option value="12">新竹市</option>
+	<option value="22">嘉義市</option>
+	<option value="31">新北市</option>
+	<option value="32">桃園市</option>
+	<option value="33">新竹縣</option>
+	<option value="34">宜蘭縣</option>
+	<option value="35">苗栗縣</option>
+	<option value="37">彰化縣</option>
+	<option value="38">南投縣</option>
+	<option value="39">雲林縣</option>
+	<option value="40">嘉義縣</option>
+	<option value="43">屏東縣</option>
+	<option value="44">澎湖縣</option>
+	<option value="45">花蓮縣</option>
+	<option selected="selected" value="46">臺東縣</option>
+	<option value="90">金門縣</option>
+	<option value="91">連江縣</option>
+
+</select>
+                                            <select name="ddlTownID" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ddlTownID\&#39;,\&#39;\&#39;)&#39;, 0)" id="ddlTownID">
+	<option value="">-------</option>
+	<option value="4601">臺東市</option>
+	<option value="4602">成功鎮</option>
+	<option value="4603">關山鎮</option>
+	<option value="4604">卑南鄉</option>
+	<option value="4609">鹿野鄉</option>
+	<option value="4610">池上鄉</option>
+	<option value="4607">東河鄉</option>
+	<option value="4608">長濱鄉</option>
+	<option value="4606">太麻里鄉</option>
+	<option value="4605">大武鄉</option>
+	<option value="4611">綠島鄉</option>
+	<option value="4613">海端鄉</option>
+	<option value="4612">延平鄉</option>
+	<option value="4615">金峰鄉</option>
+	<option value="4614">達仁鄉</option>
+	<option selected="selected" value="4616">蘭嶼鄉</option>
+
+</select>
+                                            <select name="ddlServiceOrg" id="ddlServiceOrg">
+	<option selected="selected" value="">請選擇預防保健機構(全部)</option>
+	<option value="2346160014">台東縣蘭嶼鄉衛生所</option>
+	<option value="2346160014">臺東縣蘭嶼鄉衛生所</option>
+	<option value="7546160013">台東縣蘭嶼鄉衛生所附設居家護理所</option>
+
+</select>
+                                            <select name="ddlSpecialType" id="ddlSpecialType">
+	<option selected="selected" value="">請選擇特約類別(全部)</option>
+	<option value="1">醫學中心</option>
+	<option value="2">區域醫院</option>
+	<option value="3">地區醫院</option>
+	<option value="4">診所</option>
+	<option value="5">藥局</option>
+	<option value="6">居家護理</option>
+	<option value="7">康復之家</option>
+	<option value="8">助產所</option>
+	<option value="9">檢驗所</option>
+	<option value="A">物理治療所</option>
+	<option value="B">特約醫事放射機構</option>
+
+</select>
+                                            <select name="ddlServiceCode" id="ddlServiceCode">
+	<option selected="selected" value="">請選擇服務項目(全部)</option>
+	<option value="0">社區安寧照護 </option>
+	<option value="1">復健－物理治療業務 </option>
+	<option value="2">復健－職能治療業務 </option>
+	<option value="3">復健－聽力語言治療業務 </option>
+	<option value="4">住院安寧療護 </option>
+	<option value="5">安寧居家療護 </option>
+	<option value="6">復健－聽力檢查業務 </option>
+	<option value="7">復健－語言治療業務 </option>
+	<option value="8">輸卵管外孕手術 </option>
+	<option value="9">癌症診療品質認證</option>
+	<option value="A">門診診療 </option>
+	<option value="B">住院診療 </option>
+	<option value="C">血液透析 </option>
+	<option value="D">兒童預防保健 </option>
+	<option value="E">成人預防保健 </option>
+	<option value="F">婦女子宮頸抹片檢查 </option>
+	<option value="G">孕婦產檢 </option>
+	<option value="H">居家照護 </option>
+	<option value="I">分娩 </option>
+	<option value="J">戒菸門診</option>
+	<option value="K">精神病患者居家照護 </option>
+	<option value="L">精神復健日間型機構 </option>
+	<option value="M">精神復健住宿型機構 </option>
+	<option value="N">義肢業務 </option>
+	<option value="P">兒童牙齒預防保健 </option>
+	<option value="Q">乳房X光攝影檢查</option>
+	<option value="R">醫事放射業務 </option>
+	<option value="S">醫事檢驗業務 </option>
+	<option value="T">婦產科C表手術項目 </option>
+	<option value="U">精神科日間住院治療 </option>
+	<option value="W">腹膜透析業務 </option>
+	<option value="X">結核病 </option>
+	<option value="Y">口腔黏膜檢查 </option>
+	<option value="Z">定量免疫法糞便潛血檢查 </option>
+
+</select>
+                                            <select name="ddlFuncType" id="ddlFuncType">
+	<option selected="selected" value="">請選擇診療科別(全部)</option>
+	<option value="00">不分科</option>
+	<option value="01">家醫科</option>
+	<option value="02">內科</option>
+	<option value="03">外科</option>
+	<option value="04">兒科</option>
+	<option value="05">婦產科</option>
+	<option value="06">骨科</option>
+	<option value="07">神經外科</option>
+	<option value="08">泌尿科</option>
+	<option value="09">耳鼻喉科</option>
+	<option value="10">眼科</option>
+	<option value="11">皮膚科</option>
+	<option value="12">神經科</option>
+	<option value="13">精神科</option>
+	<option value="14">復健科</option>
+	<option value="15">整形外科</option>
+	<option value="16">職業醫學科</option>
+	<option value="22">急診醫學科</option>
+	<option value="2A">結核科</option>
+	<option value="2B">洗腎科</option>
+	<option value="40">牙科</option>
+	<option value="41">復形牙科</option>
+	<option value="42">牙髓病科</option>
+	<option value="43">牙周病科</option>
+	<option value="44">補綴牙科</option>
+	<option value="45">齒顎矯正科</option>
+	<option value="46">兒童牙科</option>
+	<option value="47">口腔顎面外科</option>
+	<option value="48">口腔診斷科</option>
+	<option value="49">口腔病理科</option>
+	<option value="60">中醫科</option>
+	<option value="81">麻醉科</option>
+	<option value="82">放射線科</option>
+	<option value="83">病理科</option>
+	<option value="84">核子醫學科</option>
+	<option value="85">放射腫瘤科</option>
+	<option value="86">放射診斷科</option>
+	<option value="87">解剖病理科</option>
+	<option value="88">臨床病理科</option>
+
+</select>
+                                            <!-- <span style="margin: 0 5px 0 5px;">機構名稱</span> -->
+                                            <label for="txtKey" style="display:none"></label>
+                                            <input name="txtKey" type="text" value="輸入機構名稱" id="txtKey" class="text" onfocus="if (this.value==&#39;輸入機構名稱&#39;) this.value=&#39;&#39;;" onblur="if (this.value==&#39;&#39;) this.value=&#39;輸入機構名稱&#39;;">
+                                        </div>
+                                        <div class="r4">
+                                            <input type="submit" name="btnQuery" value="搜尋" id="btnQuery" class="ButtonGreen">
+                                        </div>
+                                    </div>
+                                </div>
+				        </div>
+			        </div>  
+                    <div class="row">
+                      <a href="https://wellness.hpa.gov.tw/App_Prog/MedicalMap.aspx#" style="color: #F3F7FA;" title="主要內容區" accesskey="C">:::</a><br>
+                        
+                        <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12">
+   
+                                <div class="Lbox">
+                                    <div class="box1">
+                                        <div id="map" class="map" style="height: 477px; position: relative; overflow: hidden;"><div style="height: 100%; width: 100%; position: absolute; top: 0px; left: 0px; background-color: rgb(229, 227, 223);"><div class="gm-style" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px;"><div tabindex="0" style="position: absolute; z-index: 0; left: 0px; top: 0px; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; cursor: pointer; touch-action: pan-x pan-y;"><div style="z-index: 1; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 100; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -90, -44);"><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div><div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;"><div style="width: 256px; height: 256px;"></div></div></div></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 101; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 102; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 103; width: 100%;"><div style="position: absolute; left: 0px; top: 0px; z-index: -1;"><div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -90, -44);"><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: -256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 256px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: 0px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -256px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: 256px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: 0px;"></div><div style="width: 256px; height: 256px; overflow: hidden; position: absolute; left: -512px; top: -256px;"></div></div></div><div style="width: 28px; height: 35px; overflow: hidden; position: absolute; left: 4348px; top: 74064px; z-index: 74099;"><img alt="" src="./醫療資源查詢_files/mapicon4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 28px; height: 35px; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="width: 28px; height: 35px; overflow: hidden; position: absolute; left: 4348px; top: 74064px; z-index: 74099;"><img alt="" src="./醫療資源查詢_files/mapicon4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 28px; height: 35px; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="width: 28px; height: 35px; overflow: hidden; position: absolute; left: 4297px; top: 74154px; z-index: 74189;"><img alt="" src="./醫療資源查詢_files/mapicon4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 28px; height: 35px; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 0;"><div style="position: absolute; z-index: 1; transform: matrix(1, 0, 0, 1, -90, -44);"><div style="position: absolute; left: 0px; top: 0px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 0px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt(1)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: -256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt(2)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: -256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt(3)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: -256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt(4)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 0px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt(5)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 256px; top: 256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt(6)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: 0px; top: 256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt(7)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -256px; top: 256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt(8)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: 256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt(9)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: 0px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt(10)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div style="position: absolute; left: -512px; top: -256px; width: 256px; height: 256px;"><img draggable="false" alt="" src="./醫療資源查詢_files/vt(11)" style="width: 256px; height: 256px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div></div><div class="gm-style-pbc" style="z-index: 2; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; opacity: 0;"><p class="gm-style-pbt"></p></div><div style="z-index: 3; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px; touch-action: pan-x pan-y;"><div style="z-index: 1; position: absolute; height: 100%; width: 100%; padding: 0px; border-width: 0px; margin: 0px; left: 0px; top: 0px;"></div><div style="z-index: 4; position: absolute; left: 50%; top: 50%; transform: translate(0px, 0px);"><div style="position: absolute; left: 0px; top: 0px; z-index: 104; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 105; width: 100%;"></div><div style="position: absolute; left: 0px; top: 0px; z-index: 106; width: 100%;"><div class="gmnoprint" title="" style="width: 28px; height: 35px; overflow: hidden; position: absolute; opacity: 0.01; cursor: pointer; touch-action: none; left: 4348px; top: 74064px; z-index: 74099;"><img alt="" src="./醫療資源查詢_files/mapicon4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 28px; height: 35px; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div class="gmnoprint" title="" style="width: 28px; height: 35px; overflow: hidden; position: absolute; opacity: 0.01; cursor: pointer; touch-action: none; left: 4348px; top: 74064px; z-index: 74099;"><img alt="" src="./醫療資源查詢_files/mapicon4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 28px; height: 35px; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div class="gmnoprint" title="" style="width: 28px; height: 35px; overflow: hidden; position: absolute; opacity: 0.01; cursor: pointer; touch-action: none; left: 4297px; top: 74154px; z-index: 74189;"><img alt="" src="./醫療資源查詢_files/mapicon4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; width: 28px; height: 35px; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div style="position: absolute; left: 0px; top: 0px; z-index: 107; width: 100%;"></div></div></div></div><iframe frameborder="0" src="./醫療資源查詢_files/saved_resource.html" style="z-index: -1; position: absolute; width: 100%; height: 100%; top: 0px; left: 0px; border: none;"></iframe><div style="margin-left: 5px; margin-right: 5px; z-index: 1000000; position: absolute; left: 0px; bottom: 0px;"><a target="_blank" href="https://maps.google.com/maps?ll=24.944518,121.369819&amp;z=15&amp;t=m&amp;hl=zh-TW&amp;gl=US&amp;mapclient=apiv3" title="按一下即可查看「Google 地圖」上的這個區域" style="position: static; overflow: visible; float: none; display: inline;"><div style="width: 66px; height: 26px; cursor: pointer;"><img alt="" src="./醫療資源查詢_files/google4.png" draggable="false" style="position: absolute; left: 0px; top: 0px; width: 66px; height: 26px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></div></a></div><div style="background-color: white; padding: 15px 21px; border: 1px solid rgb(171, 171, 171); font-family: Roboto, Arial, sans-serif; color: rgb(34, 34, 34); box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px; z-index: 10000002; display: none; width: 256px; height: 148px; position: absolute; left: 224px; top: 149px;"><div style="padding: 0px 0px 10px; font-size: 16px;">地圖資料</div><div style="font-size: 13px;">地圖資料©2018 Google</div><div style="width: 13px; height: 13px; overflow: hidden; position: absolute; opacity: 0.7; right: 12px; top: 12px; z-index: 10000; cursor: pointer;"><img alt="" src="./醫療資源查詢_files/mapcnt6.png" draggable="false" style="position: absolute; left: -2px; top: -336px; width: 59px; height: 492px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div><div class="gmnoprint" style="z-index: 1000001; position: absolute; right: 156px; bottom: 0px; width: 152px;"><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a style="text-decoration: none; cursor: pointer; display: none;">地圖資料</a><span>地圖資料©2018 Google</span></div></div></div><div class="gmnoscreen" style="position: absolute; right: 0px; bottom: 0px;"><div style="font-family: Roboto, Arial, sans-serif; font-size: 11px; color: rgb(68, 68, 68); direction: ltr; text-align: right; background-color: rgb(245, 245, 245);">地圖資料©2018 Google</div></div><div class="gmnoprint gm-style-cc" draggable="false" style="z-index: 1000001; user-select: none; height: 14px; line-height: 14px; position: absolute; right: 92px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a href="https://www.google.com/intl/zh-TW_US/help/terms_maps.html" target="_blank" style="text-decoration: none; cursor: pointer; color: rgb(68, 68, 68);">使用條款</a></div></div><button draggable="false" title="切換全螢幕檢視" aria-label="切換全螢幕檢視" type="button" style="background: none rgb(255, 255, 255); border: 0px; margin: 10px 14px; padding: 0px; position: absolute; cursor: pointer; user-select: none; width: 25px; height: 25px; overflow: hidden; top: 0px; right: 0px;"><img alt="" src="./醫療資源查詢_files/sv9.png" draggable="false" class="gm-fullscreen-control" style="position: absolute; left: -52px; top: -86px; width: 164px; height: 175px; user-select: none; border: 0px; padding: 0px; margin: 0px;"></button><div draggable="false" class="gm-style-cc" style="user-select: none; height: 14px; line-height: 14px; position: absolute; right: 0px; bottom: 0px;"><div style="opacity: 0.7; width: 100%; height: 100%; position: absolute;"><div style="width: 1px;"></div><div style="background-color: rgb(245, 245, 245); width: auto; height: 100%; margin-left: 1px;"></div></div><div style="position: relative; padding-right: 6px; padding-left: 6px; font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); white-space: nowrap; direction: ltr; text-align: right; vertical-align: middle; display: inline-block;"><a target="_blank" rel="noopener" title="向 Google 回報道路地圖或圖像錯誤" href="https://www.google.com/maps/@24.9445181,121.3698194,15z/data=!10m1!1e1!12b1?source=apiv3&amp;rapsrc=apiv3" style="font-family: Roboto, Arial, sans-serif; font-size: 10px; color: rgb(68, 68, 68); text-decoration: none; position: relative;">回報地圖錯誤</a></div></div><div class="gmnoprint gm-bundled-control gm-bundled-control-on-bottom" draggable="false" controlwidth="28" controlheight="93" style="margin: 10px; user-select: none; position: absolute; bottom: 106px; right: 28px;"><div class="gmnoprint" controlwidth="28" controlheight="55" style="position: absolute; left: 0px; top: 38px;"><div draggable="false" style="user-select: none; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; background-color: rgb(255, 255, 255); width: 28px; height: 55px;"><button draggable="false" title="放大" aria-label="放大" type="button" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 28px; height: 27px; top: 0px; left: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img alt="" src="./醫療資源查詢_files/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: 0px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></button><div style="position: relative; overflow: hidden; width: 67%; height: 1px; left: 16%; background-color: rgb(230, 230, 230); top: 0px;"></div><button draggable="false" title="縮小" aria-label="縮小" type="button" style="background: none; display: block; border: 0px; margin: 0px; padding: 0px; position: relative; cursor: pointer; user-select: none; width: 28px; height: 27px; top: 0px; left: 0px;"><div style="overflow: hidden; position: absolute; width: 15px; height: 15px; left: 7px; top: 6px;"><img alt="" src="./醫療資源查詢_files/tmapctrl.png" draggable="false" style="position: absolute; left: 0px; top: -15px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 120px; height: 54px;"></div></button></div></div><div class="gm-svpc" controlwidth="28" controlheight="28" style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; width: 28px; height: 28px; cursor: url(&quot;https://maps.gstatic.com/mapfiles/openhand_8_8.cur&quot;), default; touch-action: none; position: absolute; left: 0px; top: 0px;"><div style="position: absolute; left: 1px; top: 1px;"></div><div style="position: absolute; left: 1px; top: 1px;"><div aria-label="街景服務衣夾人控制項" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px;"><img alt="" src="./醫療資源查詢_files/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -26px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="衣夾人位在地圖上方" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img alt="" src="./醫療資源查詢_files/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -52px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div aria-label="街景服務衣夾人控制項" style="width: 26px; height: 26px; overflow: hidden; position: absolute; left: 0px; top: 0px; visibility: hidden;"><img alt="" src="./醫療資源查詢_files/cb_scout5.png" draggable="false" style="position: absolute; left: -147px; top: -78px; width: 215px; height: 835px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" controlwidth="28" controlheight="0" style="display: none; position: absolute;"><div title="將地圖旋轉 90 度" style="width: 28px; height: 28px; overflow: hidden; position: absolute; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; cursor: pointer; display: none;"><img alt="" src="./醫療資源查詢_files/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: 6px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div><div class="gm-tilt" style="width: 28px; height: 28px; overflow: hidden; position: absolute; background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; border-radius: 2px; top: 0px; cursor: pointer;"><img alt="" src="./醫療資源查詢_files/tmapctrl4.png" draggable="false" style="position: absolute; left: -141px; top: -13px; width: 170px; height: 54px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none;"></div></div></div><div class="gmnoprint" style="margin: 10px; z-index: 0; position: absolute; cursor: pointer; left: 0px; top: 0px;"><div class="gm-style-mtc" style="float: left; position: relative;"><div role="button" tabindex="0" title="顯示街道地圖" aria-label="顯示街道地圖" aria-pressed="true" draggable="false" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 8px; border-bottom-left-radius: 2px; border-top-left-radius: 2px; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; min-width: 26px; font-weight: 500;">地圖</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; position: absolute; left: 0px; top: 31px; text-align: left; display: none;"><div draggable="false" title="顯示包含地形的街道地圖" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden; display: none;"><img alt="" src="./醫療資源查詢_files/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">地形圖</label></div></div></div><div class="gm-style-mtc" style="float: left; position: relative;"><div role="button" tabindex="0" title="顯示衛星圖" aria-label="顯示衛星圖" aria-pressed="false" draggable="false" style="direction: ltr; overflow: hidden; text-align: center; position: relative; color: rgb(86, 86, 86); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 8px; border-bottom-right-radius: 2px; border-top-right-radius: 2px; background-clip: padding-box; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; min-width: 53px; border-left: 0px;">衛星檢視</div><div style="background-color: white; z-index: -1; padding: 2px; border-bottom-left-radius: 2px; border-bottom-right-radius: 2px; box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; position: absolute; right: 0px; top: 31px; text-align: left; display: none;"><div draggable="false" title="顯示包含街道名稱的圖像" style="color: rgb(0, 0, 0); font-family: Roboto, Arial, sans-serif; user-select: none; font-size: 11px; background-color: rgb(255, 255, 255); padding: 6px 8px 6px 6px; direction: ltr; text-align: left; white-space: nowrap;"><span role="checkbox" style="box-sizing: border-box; position: relative; line-height: 0; font-size: 0px; margin: 0px 5px 0px 0px; display: inline-block; background-color: rgb(255, 255, 255); border: 1px solid rgb(198, 198, 198); border-radius: 1px; width: 13px; height: 13px; vertical-align: middle;"><div style="position: absolute; left: 1px; top: -2px; width: 13px; height: 11px; overflow: hidden;"><img alt="" src="./醫療資源查詢_files/imgs8.png" draggable="false" style="position: absolute; left: -52px; top: -44px; user-select: none; border: 0px; padding: 0px; margin: 0px; max-width: none; width: 68px; height: 67px;"></div></span><label style="vertical-align: middle; cursor: pointer;">地名</label></div></div></div></div></div></div></div>
+                                        <noscript>
+                                            當script無法執行時可按<a href="MedicalList.aspx" title="醫療資源查詢">【醫療資源查詢】</a>此連結替代</noscript>
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-xs-12 col-sm-12">
+                            <div id="center">
+        <div class="contentA">
+                             <div class="Rbox">
+                <div class="box1">
+                    <h2>
+                        <span>找醫院/診所</span></h2>
+                    <div id="divGV1" style="display: block">
+                        <div class="num">
+                            共<span id="lblCount">3</span>筆資料
+                        </div>
+                        <div id="UpdatePanel1">
+                                <div class="page2">
+                                    <span id="DataPager1"><a class="aspNetDisabled first">第一頁</a>&nbsp;<a class="aspNetDisabled pre">上一頁</a>&nbsp;<a class="aspNetDisabled next">下一頁</a>&nbsp;<a class="aspNetDisabled last">最後一頁</a>&nbsp;
+                                                    <span class="R">第1/
+                                                        1頁
+                                                    </span>
+                                                </span>
+                                </div>
+                                <div id="listbox" class="listbox" style="height: 376px;">
+                                
+                                        
+                                        <div class="list" id="19994">
+                                            <img src="./醫療資源查詢_files/maphospital.gif" alt="*">
+                                            <ul class="text">
+                                                <li>
+                                                    台東縣蘭嶼鄉衛生所</li><li>
+                                                        089-732575</li>
+                                                        <li>台東縣蘭嶼鄉紅頭村３６號</li>                                                
+                                                <li><b>免費健康檢查服務</b>：兒童預防保健 ,成人預防保健 ,婦女子宮頸抹片檢查 ,孕婦產檢 ,兒童牙齒預防保健 ,</li>
+                                                <li>更新日期:2015/3/25 下午 03:03:38</li>
+                                            </ul>
+                                            <div class="clear">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="list" id="20532">
+                                            <img src="./醫療資源查詢_files/maphospital.gif" alt="*">
+                                            <ul class="text">
+                                                <li>
+                                                    台東縣蘭嶼鄉衛生所附設居家護理所</li><li>
+                                                        089-732575</li>
+                                                        <li>台東縣蘭嶼鄉紅頭村３６號</li>                                                
+                                                
+                                                <li>更新日期:2015/3/25 下午 03:03:38</li>
+                                            </ul>
+                                            <div class="clear">
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="list" id="27564">
+                                            <img src="./醫療資源查詢_files/maphospital.gif" alt="*">
+                                            <ul class="text">
+                                                <li>
+                                                    臺東縣蘭嶼鄉衛生所</li><li>
+                                                        089-732557</li>
+                                                        <li>紅頭村36-1號</li>                                                
+                                                <li><b>免費健康檢查服務</b>：兒童預防保健 ,成人預防保健 ,婦女子宮頸抹片檢查 ,孕婦產檢 ,兒童牙齒預防保健 ,</li>
+                                                <li>更新日期:2017/10/6 上午 11:03:11</li>
+                                            </ul>
+                                            <div class="clear">
+                                            </div>
+                                        </div>
+                                    
+                                    
+                                
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+
+                        </div>
+
+                       
+                        </div>  
+                    </div>        
+		        </div>
+          
+       
+    </div></div></div></section>
+
+        
+
+
+    <!--[if lte IE 6]>
+            <div id="noie6">
+            很抱歉，目前本站瀏覽不支援IE6以下的瀏覽器，若看見版面跑掉，純屬正常狀況。<br />
+            建議您改用 IE7.0以上版本，以取得最佳、最快的瀏覽效果！
+        </div>  
+    <![endif]-->
+
+    <footer>
+	    <div class="footer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	                    <h3> 衛教影音<i class="fa fa-leaf i_ml10" aria-hidden="true"></i> </h3>
+	                    <ul>
+	                        <li> <a href="https://wellness.hpa.gov.tw/Health_Education/Health_Education.aspx"> 個人化衛教 </a> </li>
+	                        <li> <a href="https://wellness.hpa.gov.tw/App_Prog/Favorites.aspx"> 我的最愛 </a> </li>
+	                        <li> <a href="https://wellness.hpa.gov.tw/Health_Education/Announcements.aspx"> 文章總匯 </a> </li>
+	                    </ul>
+	                </div>
+	                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	                    <h3> 健康指標<i class="fa fa-leaf i_ml10" aria-hidden="true"></i> </h3>
+	                    <ul>
+	                        <li> <a href="https://wellness.hpa.gov.tw/App_Prog/MemberInfo.aspx"> 個人健康管理(會員專區) </a> </li>
+                            <li> <a href="https://wellness.hpa.gov.tw/App_Prog/MemberInfo.aspx"> 健康計分卡</a> </li>
+                            <li> <a href="https://wellness.hpa.gov.tw/App_Prog/MemberHealthCheckup.aspx"> 健檢小幫手</a> </li>
+                            <li> <a href="https://wellness.hpa.gov.tw/My_Health/Friends.aspx"> 戰友團</a> </li>
+                            <li> <a href="https://wellness.hpa.gov.tw/App_Prog/Schedule.aspx"> 健康行事曆</a> </li>
+	                    </ul>
+	                </div>
+	                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	                    <h3> 健康評量<i class="fa fa-leaf i_ml10" aria-hidden="true"></i> </h3>
+	                    <ul>
+	                        <li> <a href="https://wellness.hpa.gov.tw/App_Prog/MemberInfo.aspx"> 健康評量表  </a> </li>
+	                        <li> <a href="https://wellness.hpa.gov.tw/App_Prog/Weight_Calculate.aspx"> 標準體重  </a> </li>
+	                        <li> <a href="https://wellness.hpa.gov.tw/App_Prog/Cal_Calculate.aspx"> 每日熱量  </a> </li>
+	                        <li> <a href="https://wellness.hpa.gov.tw/App_Prog/Ratio_Calculate.aspx"> 腰臀比值  </a> </li>
+	                        <li> <a href="https://wellness.hpa.gov.tw/App_Prog/Smoke_Calculate.aspx"> 戒菸好處  </a> </li>
+	                        <li> <a href="https://wellness.hpa.gov.tw/App_Prog/Questions_search.aspx"> 自我評量查詢  </a> </li>
+	                    </ul>
+	                </div>
+	                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+	                    <h3> 健康地圖<i class="fa fa-leaf i_ml10" aria-hidden="true"></i> </h3>
+                        <ul>
+	                        <li> <a href="https://wellness.hpa.gov.tw/App_Prog/MedicalMap.aspx"> 健康地圖  </a> </li>
+                             <li> <a href="https://www.hpa.gov.tw/Home/Index.aspx"> 國民健康署 </a> </li>
+	                    </ul>
+	                </div>
+	            </div>
+	            <!--/.row-->
+	        </div>
+	        <!--/.container-->
+	    </div>
+	    <!--/.footer-->
+	</footer>
+    
+    <div class="six-footInfo">
+            <div class="container">
+                <div class="row">       
+                    <div class="col-md-12 col-sm-12 col-xs-12  text-center">
+                        臺北辦公室 總機：02-2522-0888<br class="visible-xs-inline">
+                        地址：<a href="https://goo.gl/maps/37BmGASreEL2" title="顯示臺北辦公室地址地圖(另開視窗)" alt="臺北辦公室地址地圖顯示連結(另開視窗)" target="_blank">(10341)臺北市大同區塔城街36號 <i class="fa fa-map-marker"></i></a>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+
+      
+
+        <div class="six-copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-xs-6 col-sm-6">
+                <a href="https://wellness.hpa.gov.tw/App_Prog/MedicalMap.aspx#g" title="網站版權宣告" accesskey="g" id="g" style="float:left">:::</a>
+                <a href="http://www.gov.tw/" title="前往我的e政府網站" style="float:left;"><img src="./醫療資源查詢_files/gov.png" alt="我的e政府網站連結"></a>
+                 <a href="https://www.handicap-free.nat.gov.tw/Applications/Detail?category=20150417134429" title="無障礙網站" style="float:left;">
+                  <img src="./醫療資源查詢_files/aplus.jpg" border="0" width="88" height="31" alt="通過A+優先等級無障礙網頁檢測">
+                   </a>
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-12">
+                
+                <div>
+                    <ul class="nav">
+                       
+                        <li><a href="https://www.hpa.gov.tw/Home/Index.aspx">國民健康署 © 版權所有</a>
+                        </li>
+                        <li>
+                           <a href="https://wellness.hpa.gov.tw/App_Prog/security.aspx" title="資訊安全政策" alt="資訊安全政策頁面連結">資訊安全政策</a>
+                        </li>
+                        <li>
+                            <a href="https://wellness.hpa.gov.tw/App_Prog/privacy.aspx" title="隱私權聲明" alt="隱私權政策頁面連結">隱私權聲明</a>
+                        </li>
+                         <li>
+                            <a href="https://wellness.hpa.gov.tw/App_Prog/MemberSatisfaction.aspx" title="滿意度及實用度問卷" alt="滿意度及實用度問卷">滿意度及實用度問卷</a>
+                         </li>
+                        
+                        
+                        <li>
+                            <a href="https://wellness.hpa.gov.tw/App_Prog/SiteMap.aspx" title="網站導覽" alt="網站導覽連結">網站導覽</a>
+                        </li>
+                        <li>
+                            <a href="https://wellness.hpa.gov.tw/App_Prog/copyright.aspx" title="著作權聲明" alt="著作權聲明">著作權聲明</a>
+                        </li>
+                       
+                    </ul>
+                </div>
+                <div class="text-center">
+                    <p class="hidden-xs">請勿任意轉載作商業用途 建議使用 1024x768 螢幕解析度 Best view with 1024x768</p>
+                 
+                </div>
+            </div>
+        
+            
+        </div>
+    </div>
+</div>
+    <div id="UpdateProgress1" class="UpdateProgress" style="display: none; visibility: visible;" role="status" aria-hidden="true">
+	
+            <div id="pnlPopup" class="progress">
+		
+                <div class="Container_Progress">
+                    <div class="Body_Progress">
+                        <img id="ImageProgress" src="./醫療資源查詢_files/loading.gif" alt="*">資料處理中,
+                        請稍候...
+                    </div>
+                </div>
+            
+	</div>
+        
+</div>
+    <script type="text/javascript">
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+        var updateProgress = null;
+        //        prm.add_pageLoaded(pageLoaded);
+        prm.add_initializeRequest(BeginRequestHandler);
+
+        function BeginRequestHandler(sender, args) {
+            ActivateAlertDiv();
+        }
+
+        function pageLoaded(sender, args) {
+            ActivateAlertDiv();
+        }
+
+        function ActivateAlertDiv() {
+            updateProgress = $find("UpdateProgress1");
+            updateProgress.set_visible(true);
+            window.setTimeout("updateProgress.set_visible(false)", updateProgress.get_displayAfter());
+        }
+
+    </script>
+    
+
+<script type="text/javascript">
+//<![CDATA[
+QueryData();mainPageLoad();Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":null,"displayAfter":500,"dynamicLayout":true}, null, null, $get("UpdateProgress1"));
+});
+//]]>
+</script>
+<span style="display: none !important;"><input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""></span><span style="display: none !important;"><input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""></span><span style="display: none !important;"><input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value=""></span><span style="display: none !important;"><input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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"></span><span style="display: none !important;"><input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="395AFE6E"></span><span style="display: none !important;"><input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="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"></span><span style="display: none !important;"><input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value=""></span></form>
+
+
+<div class="ginger-module-correctionBubble" style="display: none;"><div class="ginger-module-correctionBubble-container ginger-module-correctionBubble-container-loggedout"><div class="ginger-module-correctionBubble-login">Log in</div><div class="ginger-module-correctionBubble-body">to use Ginger</div></div><div class="ginger-module-correctionBubble-container ginger-module-correctionBubble-container-loggedin"><div class="ginger-module-correctionBubble-limited">Limited mode</div><div class="ginger-module-correctionBubble-body"></div><a href="javascript:" class="ginger-module-correctionBubble-close" title="Ignore mistake">×</a></div></div><div contenteditable="false" id="ginger-floatingG-container" style="position: absolute; top: 0px; left: 0px;"><div class="ginger-floatingG ginger-floatingG-closed" style="display: none;"><div class="ginger-floatingG-disabled-main"><div class="ginger-floatingG-bar-tool-tooltip">Enable Ginger</div></div><div class="ginger-floatingG-offline-main"><div class="ginger-floatingG-bar-tool-tooltip"><em>Cannot connect to Ginger</em> Check your internet connection<br> or reload the browser</div></div><div class="ginger-floatingG-enabled-main"><div class="ginger-floatingG-bar"><div class="ginger-floatingG-bar-tool ginger-floatingG-bar-tool-disable"><a></a><div class="ginger-floatingG-bar-tool-tooltip">Disable in this text field</div></div><div class="ginger-floatingG-bar-tool"><a class="ginger-floatingG-bar-tool-edit">Edit</a><div class="ginger-floatingG-bar-tool-tooltip">Edit in Ginger</div></div><div class="ginger-floatingG-bar-tool ginger-floatingG-bar-tool-mistakes"><a><span class="ginger-floatingG-bar-tool-mistakes-count"></span><svg width="14px" height="14px" viewBox="0 0 66 66" class="ginger-floatingG-loader-spinner"><circle class="ginger-floatingG-loader-spinner-path" fill="none" stroke-width="8.5" stroke-linecap="round" cx="33" cy="33" r="28"></circle></svg></a><div class="ginger-floatingG-bar-tool-tooltip">Edit in Ginger</div></div></div></div></div></div><div class="ginger-extension-writer" style="display: none;"><div class="ginger-extension-writer-frame"><iframe src="./醫療資源查詢_files/index.html"></iframe></div></div><div class="ginger-module-correctionBubble-onboarding"><div class="ginger-module-correctionBubble-onboarding-bubble ginger-module-correctionBubble-onboarding-top">To approve a single suggestion, mouse over it and click "✔"</div><div class="ginger-module-correctionBubble-onboarding-bubble ginger-module-correctionBubble-onboarding-bottom">Click the bubble to approve all of its suggestions.</div></div></body></html>

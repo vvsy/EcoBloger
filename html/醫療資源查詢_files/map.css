@@ -1,0 +1,401 @@
+body,
+img,
+a img,
+ul,
+table {
+  margin: 0;
+  padding: 0;
+}
+img,
+a img {
+  border: none;
+  vertical-align: middle;
+}
+input {
+  vertical-align: middle;
+  color: #4a4a4a;
+  padding: 0 5px;
+  margin: 0px;
+  font-family: "微軟正黑體", Arial;
+}
+input[type="text"] {
+  padding: 0 5px;
+  margin: 0px;
+  height: 23px;
+  line-height: 23px;
+  background-color: #fff;
+  border: 1px solid #c6c6c6;
+}
+select {
+  vertical-align: middle;
+  font-size: 0.875em;
+  height: 24px;
+  line-height: 24px;
+  color: #4a4a4a;
+  border: 1px solid #c6c6c6;
+  *border-collapse: collapse;
+  padding: 0 0 0 3px;
+  font-family: "微軟正黑體", Arial;
+  background: #ffffff;
+  background: -moz-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #ededed));
+  background: -webkit-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  background: -o-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  background: -ms-linear-gradient(top, #ffffff 0%, #ededed 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #ededed 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#EDEDED', GradientType=0);
+}
+a {
+  text-decoration: none;
+  color: #00627d;
+}
+a:hover {
+  color: #555;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+.red {
+  color: #db0000;
+}
+body {
+  font: 14px/22px "微軟正黑體", Arial, Helvetica, Georgia, Arial, sans-serif;
+  color: #282828;
+  -webkit-text-size-adjust: none;
+}
+/*-------logo+nav---------*/
+#header {
+  height: 97px;
+  border-top: 5px solid #D8E78A;
+  padding: 0 1%;
+}
+#header #logo {
+  width: 26%;
+  height: 97px;
+  float: left;
+}
+#header .Rbox {
+  float: right;
+  width: 55%;
+}
+#header .link1 {
+  padding: 0 5px 0 5px;
+}
+#header .r1 {
+  float: right;
+  width: 610px;
+  text-align: right;
+  margin: 0px 5px 3px 0;
+}
+#header .r2 {
+  float: right;
+}
+#header .rx {
+  width: 100%;
+  display: table-cell;
+  *float: left;
+}
+#header .r4x {
+  width: 10%;
+  display: table-row;
+  *float: right;
+}
+
+#header .r3 {
+  width: 90%;
+  display: table-cell;
+  *float: left;
+}
+#header .r4 {
+  width: 10%;
+  display: table-cell;
+  *float: left;
+}
+#header input[type="text"] {
+  margin: 3px 8px 3px 0px;
+}
+#header select {
+  margin: 3px 8px 3px 0px;
+}
+#header .Button {
+  margin: 0 0 0 5px;
+}
+/*-------內容---------*/
+#center {
+  background: url(../images/centerbg.jpg) repeat-x;
+}
+#center .contentA {
+  padding: 0 1%;
+}
+#center .contentA .Lbox {
+  float: left;
+  width: 74%;
+}
+#center .contentA .Rbox {
+  float: right;
+  width: 25%;
+}
+#center .contentA .block {
+  margin: 20px 0;
+}
+#center .contentA .box1 {
+  border: 1px solid #e3ebf4;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 0px 1px #f8f8f8;
+  -moz-box-shadow: 0 1px 0px 1px #f8f8f8;
+  -webkit-box-shadow: 0 1px 0px 1px #f8f8f8;
+  background-color: #ffffff;
+}
+#center .contentA h2 {
+  margin: 0px;
+  padding: 0px;
+  height: 36px;
+  line-height: 33px;
+  font-size: 1.25em;
+  background: url(../images/titleyellow.jpg) repeat-x;
+}
+#center .contentA h2 span {
+  float: left;
+  padding-left: 35px;
+  background: url(../images/icon.png) no-repeat 6px -827px;
+  color: #ffffff;
+}
+#center .contentA h2 input {
+  float: right;
+  margin: 4px 5px;
+}
+#center .contentA .num {
+  height: 34px;
+  line-height: 34px;
+  padding: 0 4%;
+  border-bottom: 1px solid #d3d3d3;
+}
+#center .contentA .num span {
+  margin: 0 5px;
+  color: #db0000;
+  font-family: Arial;
+}
+#center .contentA .listbox {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#center .contentA .list {
+  margin: 0;
+  border-bottom: 1px dotted #d3d3d3;
+}
+#center .contentA .list img {
+  float: left;
+  margin: 19px 4%;
+  cursor: pointer;
+}
+#center .contentA .list .text {
+  float: left;
+  width: 63%;
+  margin: 15px 4% 4% 0;
+  list-style: none;
+}
+#center .contentA .list .text li {
+  margin: 0;
+  padding: 0px;
+  cursor: pointer;
+}
+/*-------醫療資源查詢---------*/
+/*-------頁尾---------*/
+#footer {
+  background: url(../images/footerbg.jpg) repeat-x;
+  font-size: 0.75em;
+}
+#footer .subnav {
+  height: 31px;
+  line-height: 31px;
+  text-align: center;
+  color: #ffffff;
+  background: url(../images/subnavbg.jpg) repeat-x;
+}
+#footer .subnav a {
+  color: #ffffff;
+}
+#footer .subnav a:hover {
+  color: #222222;
+}
+/*--- 按鈕 ---*/
+.ButtonGreen {
+  margin: 2px 7px;
+  padding: 4px 17px 5px 17px;
+  font-size: 0.9375em;
+  line-height: 15px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  *height: 25px;
+  *line-height: 17px;
+  *padding: 2px 9px;
+  color: #fff;
+  border: 1px solid #47a349;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -khtml-border-radius: 3px;
+  box-shadow: 0px 0px 1px 0px #47a349, 0px 0px 0px 0px #999999, 0px 0px 2px 0px #95c7e8 inset;
+  -moz-box-shadow: 0px 0px 0px 0px #999999, 0px 0px 2px 0px #95c7e8 inset;
+  -webkit-box-shadow: 0px 0px 0px 0px #999999, 0px 0px 2px 0px #95c7e8 inset;
+  *border: 0;
+  *border-radius: 0px;
+  *box-shadow: 0;
+  cursor: pointer;
+  background: #6ABC68;
+  background: -moz-linear-gradient(top, #6abc68 0%, #488d45 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #6abc68), color-stop(100%, #488d45));
+  background: -webkit-linear-gradient(top, #6abc68 0%, #488d45 100%);
+  background: -o-linear-gradient(top, #6abc68 0%, #488d45 100%);
+  background: -ms-linear-gradient(top, #6abc68 0%, #488d45 100%);
+  background: linear-gradient(to bottom, #6abc68 0%, #488d45 100%);
+}
+.ButtonGreen:hover {
+  color: #fff;
+  border: 1px solid #47a349;
+  *border: 0;
+  box-shadow: 0px 0px 1px 0px #47a349, 0px 0px 0px 0px #999999, 0px 0px 2px 0px #95c7e8 inset;
+  -moz-box-shadow: 0px 0px 0px 0px #999999, 0px 0px 2px 0px #95c7e8 inset;
+  -webkit-box-shadow: 0px 0px 0px 0px #999999, 0px 0px 2px 0px #95c7e8 inset;
+  background: #488D45;
+  background: -moz-linear-gradient(top, #488d45 1%, #488d45 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #488d45), color-stop(100%, #488d45));
+  background: -webkit-linear-gradient(top, #488d45 1%, #488d45 100%);
+  background: -o-linear-gradient(top, #488d45 1%, #488d45 100%);
+  background: -ms-linear-gradient(top, #488d45 1%, #488d45 100%);
+  background: linear-gradient(to bottom, #488d45 1%, #488d45 100%);
+}
+/*--- 搜尋條件 ---*/
+.Condition {
+  margin: 5px 0 5px 2%;
+  border: 0;
+}
+.Condition td {
+  padding: 5px 4px;
+  vertical-align: top;
+}
+.Condition .text {
+  display: inline-block;
+  background: url(../images/icon1.png) no-repeat 0;
+  padding: 0 5px 0 20px;
+  vertical-align: middle;
+}
+.Condition table {
+  border-collapse: collapse;
+  display: inline;
+  vertical-align: middle;
+}
+.Condition table td {
+  border: 0;
+  padding: 3px 0;
+}
+.Condition table input[type="radio"] {
+  margin: 0 3px;
+}
+.Condition table input[type="checkbox"] {
+  margin: 0 3px;
+}
+.Condition table textarea {
+  width: 99%;
+  height: 60px;
+  font-family: "微軟正黑體", Arial;
+}
+.Condition input[type="radio"] {
+  margin: 0 3px;
+}
+.Condition input[type="checkbox"] {
+  margin: 0 3px;
+}
+.Condition input[type="image"] {
+  vertical-align: middle;
+}
+.Condition input[type="text"] {
+  width: 100px;
+}
+.page2 {
+  margin: 0px 5px;
+  height: er;
+}
+.page2 .first {
+  *line-height: 32px;
+  text-align: left;
+  vertical-align: middle;
+}
+.page2 .first,
+.page2 .pre,
+.page2 .next,
+.page2 .last {
+  width: 29px;
+  height: 21px;
+  margin: 0 3px;
+  display: inline-block;
+  line-height: 9999px;
+  overflow: hidden;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.page2 .first {
+  background: url(../images/pageB.png) no-repeat;
+}
+.page2 .first:hover {
+  background: url(../images/pageB.png) no-repeat 0 -21px;
+}
+.page2 .pre {
+  background: url(../images/pageB.png) no-repeat -29px 0;
+}
+.page2 .pre:hover {
+  background: url(../images/pageB.png) no-repeat -29px -21px;
+}
+.page2 .next {
+  background: url(../images/pageB.png) no-repeat -58px 0;
+}
+.page2 .next:hover {
+  background: url(../images/pageB.png) no-repeat -58px -21px;
+}
+.page2 .last {
+  background: url(../images/pageB.png) no-repeat -87px 0;
+}
+.page2 .last:hover {
+  background: url(../images/pageB.png) no-repeat -87px -21px;
+}
+.page2 .pageOn,
+.page2 .pageOut {
+  width: 21px;
+  height: 21px;
+  line-height: 20px;
+  font-size: 0.75em;
+  margin: 0 2px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+.page2 .pageOn {
+  background: url(../images/pageOn.png) no-repeat;
+  color: #fff;
+}
+.page2 .pageOut {
+  background: url(../images/pageOut.png) no-repeat;
+}
+.page2 .pageOut:hover {
+  background: url(../images/pageOn.png) no-repeat;
+  color: #fff;
+}
+.page2 .R {
+  margin: 3px 8px;
+}
+
+.nav-li {
+    -webkit-box-flex: 1.0;
+    -moz-box-flex: 1.0;
+    box-flex: 1.0;
+    text-align: center;
+    font-size: medium;
+    margin-top: 15px;
+}

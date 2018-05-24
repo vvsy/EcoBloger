@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://www.taipower.com.tw/d006/Meter/power_today_meter18.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+  <title>今日電力資訊</title>
+<style type="text/css">
+#lgg_chartdiv {
+    width : 240px;
+    height : 170px;
+	text-align: left;
+}
+#image1 {	
+	text-align: left;
+	margin-left: 75px;	
+}
+#base {
+	font-size: 12px;
+	font-family: Microsoft JhengHei;
+}
+.body {
+	width: 290px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	font-family: Microsoft JhengHei;
+	font-size: 12px;
+}
+#font {
+	font-size: 12px;
+	font-family: Microsoft JhengHei;
+	line-height: 24px;
+	color:#666666;
+	color: #666666;
+	margin-left:3em;
+}
+.font_right {
+	font-family: Microsoft JhengHei;
+	font-size: 12px;
+	text-align: right;
+	color:#666666;
+}
+.font_right2 {
+	font-family: Microsoft JhengHei;
+	font-size: 12px;
+	float: right;
+	padding-right:30px;
+}
+.font_left {
+	font-family: Microsoft JhengHei;
+	font-size: 12px;
+	float: left;
+	padding-left:30px;
+	color:#666666;
+	color: #666666;
+}
+.font_red {
+	font-size: 12px;
+	font-family: Microsoft JhengHei;
+	font-weight: bold;
+	color: #F00;
+}
+a:link, a:visited{
+	color:#666;
+	text-decoration: none;
+	font-size: 12px;
+}
+a:hover, a:active{
+	color:#666;
+	text-decoration: underline;
+}
+.powerlink { position:relative; bottom:20px; width:240px; height:20px; padding:0 8px;}
+.powerlink a { display:inline-block; padding:0px 10px; line-height:22px; background:#999; color:#fff; font-family:'Microsoft JhengHei'; font-size:14px; text-decoration:none;
+-webkit-border-radius:5px;
+-moz-border-radius:5px;
+-ms-border-radius:5px;
+-o-border-radius:5px;
+border-radius:5px; }
+.powerlink a:hover { background:#88bc13; }
+.title {
+    font-size:18px; 
+    font-weight:bold; 
+    font-family:Microsoft JhengHei;
+    line-height:30px;
+    }
+.title:before {
+     content:""; position:absolute; bottom:0px; left:0px; width:36px; height:2px; background:#9dd127; 
+}
+</style>
+</head>
+<body>
+    <script type="text/javascript" src="./amcharts.js.下載"></script>
+    <script type="text/javascript" src="./gauge.js.下載"></script>
+    <script type="text/javascript" src="./light.js.下載"></script>
+    <script type="text/javascript" src="./loadpara.js.下載"></script>
+    <script type="text/javascript" src="./chartArgs.js.下載"></script>
+    <!--<div id="image1"><img src="./imgs/title02-2.gif" width="114" height="23" alt="今日電力資訊" /></div>-->
+    <!-- <noscript>
+    <div class="body" id="font">
+    <a href='https://www.taipower.com.tw/content/new_info/new_info_in.aspx?LinkID=30' target='_blank'>
+    訊息：請開啟Javascript以顯示資訊。
+    </a>
+    </div>
+    </noscript> -->
+    <div style="width:240px; height:170px; position:relative; border: solid 0px;">
+    <div id="lgg_chartdiv" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.14.0</desc><g><path cs="100,100" d="M0.5,0.5 L-0.5,0.5 L-0.5,-0.5 L0.5,-0.5 Z" fill="#FFFFFF" stroke="#000000" fill-opacity="0" stroke-width="1" stroke-opacity="0"></path></g><g></g><g></g><g></g><g></g><g></g><g><g><g opacity="0.8"><path cs="1000,1000" d=" M-47.27077214458598,-8.33511252801266 L-56.134041921695854,-9.897946127015034 A57,57,0,0,1,1.764752524615022,-56.97267457761541 L1.4861073891494923,-47.97698911799192 A48,48,0,0,0,-47.27077214458598,-8.33511252801266 Z" fill="#80d024" stroke="#000000" stroke-width="0" stroke-opacity="0"></path></g><g opacity="0.8"><path cs="1000,1000" d=" M1.4861073891494923,-47.97698911799192 L1.764752524615022,-56.97267457761541 A57,57,0,0,1,31.09823376014854,-47.76923546592679 L26.18798632433561,-40.22672460288572 A48,48,0,0,0,1.4861073891494923,-47.97698911799192 Z" fill="#f4e034" stroke="#000000" stroke-width="0" stroke-opacity="0"></path></g><g opacity="0.8"><path cs="1000,1000" d=" M26.18798632433561,-40.22672460288572 L31.09823376014854,-47.76923546592679 A57,57,0,0,1,47.14720005877131,-32.03344387695764 L39.70290531264952,-26.975531685859064 A48,48,0,0,0,26.18798632433561,-40.22672460288572 Z" fill="#ffb133" stroke="#000000" stroke-width="0" stroke-opacity="0"></path></g><g opacity="0.8"><path cs="1000,1000" d=" M39.70290531264953,-26.975531685859053 L47.14720005877132,-32.03344387695763 A57,57,0,0,1,52.29585658671385,-22.67473007252473 L44.0386160730222,-19.09450953475767 A48,48,0,0,0,39.70290531264953,-26.975531685859053 Z" fill="#ff3e32" stroke="#000000" stroke-width="0" stroke-opacity="0"></path></g><g opacity="0.8"><path cs="1000,1000" d=" M44.0386160730222,-19.09450953475767 L52.29585658671385,-22.67473007252473 A57,57,0,0,1,56.134041921695854,-9.897946127015034 L47.27077214458598,-8.33511252801266 A48,48,0,0,0,44.0386160730222,-19.09450953475767 Z" fill="#323232" stroke="#000000" stroke-width="0" stroke-opacity="0"></path></g><g><path cs="1000,1000" d=" M-56.134041921695854,-9.897946127015034 L-57.118849674708066,-10.071594304681964 A58,58,0,0,1,57.118849674708066,-10.071594304681964 L56.134041921695854,-9.897946127015034 A57,57,0,0,0,-56.134041921695854,-9.897946127015034 Z" fill="#000000" fill-opacity="0.1" stroke-width="0" stroke-opacity="0"></path></g><path cs="100,100" d="M-55.634041921695854,-9.397946127015034 L-40.861925626512736,-6.793223462011078" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000"></path><path cs="100,100" d="M-50.73126063905252,-24.487155366977415 L-43.54090826865919,-20.980186192664796" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000"></path><path cs="100,100" d="M-41.85925505221147,-37.64044456245492 L-35.91409644839232,-32.28739971158405" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000"></path><path cs="100,100" d="M-29.70539806129268,-47.838741480916276 L-25.46604394742704,-41.05435671166487" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000"></path><path cs="100,100" d="M-15.211329281568952,-54.29191666848418 L-13.00623043503296,-46.601823100977626" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000"></path><path cs="100,100" d="M0.5,-56.5 L0.5,-41.5" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000"></path><path cs="100,100" d="M16.21132928156895,-54.29191666848418 L14.00623043503296,-46.601823100977626" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000"></path><path cs="100,100" d="M30.70539806129268,-47.838741480916276 L26.46604394742704,-41.05435671166487" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000"></path><path cs="100,100" d="M42.85925505221147,-37.64044456245492 L36.91409644839232,-32.28739971158405" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000"></path><path cs="100,100" d="M51.73126063905252,-24.487155366977415 L44.54090826865919,-20.980186192664796" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000"></path><path cs="100,100" d="M56.634041921695854,-9.397946127015034 L41.861925626512736,-6.793223462011078" fill="none" stroke-width="1" stroke-opacity="0" stroke="#000000"></path></g><g><path cs="100,100" d="M-9.301979821851141,-13.733101965911125 L-22.17861592444376,-45.514893021190055 L-22.17861592444376,-45.514893021190055 L-4.81709746111137,-15.943493381548919 Z" fill="dimgray" stroke="dimgray" fill-opacity="0.8" stroke-width="1" stroke-opacity="0.8"></path></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g><g><text y="7" fill="gray" font-family="Microsoft JhengHei" font-size="14" opacity="1" text-anchor="start" transform="translate(34,149)" style="pointer-events: none;"><tspan y="7" x="0" style="font-size: 14px;">目前用電量 </tspan></text><text y="10" fill="#009900" font-family="Microsoft JhengHei" font-size="20" opacity="1" font-weight="bold" text-anchor="start" transform="translate(111,146)" style="pointer-events: none;"><tspan y="10" x="0" style="font-size: 20px;">2909.8</tspan></text><text y="7" fill="gray" font-family="Microsoft JhengHei" font-size="14" opacity="1" text-anchor="start" transform="translate(179,149)" style="pointer-events: none;"><tspan y="7" x="0" style="font-size: 14px;"> 萬瓩</tspan></text><text y="6" fill="gray" font-family="Microsoft JhengHei" font-size="12" opacity="1" text-anchor="end" transform="translate(236,20)" style="pointer-events: none;"><tspan y="6" x="0" style="font-size: 12px;">107.05.19(六)10:40</tspan></text><text y="5" fill="gray" font-family="Microsoft JhengHei" font-size="10" opacity="1" text-anchor="start" transform="translate(36,123)" style="pointer-events: none;"><tspan y="5" x="0" style="font-size: 10px;">2710</tspan></text><text y="5" fill="gray" font-family="Microsoft JhengHei" font-size="9" opacity="1" text-anchor="start" transform="translate(158,123)" style="pointer-events: none;"><tspan y="5" x="0" style="font-size: 9px;">MAX</tspan></text><text y="5" fill="gray" font-family="Microsoft JhengHei" font-size="10" opacity="1" text-anchor="start" transform="translate(184,123)" style="pointer-events: none;"><tspan y="5" x="0" style="font-size: 10px;">3305</tspan></text></g></g><g></g><g></g><g></g></svg></div></div></div>
+    <!--<div class="powerlink"><a href="https://www.taipower.com.tw/content/new_info/new_info_in.aspx?LinkID=30" tabindex="4500">今日電力資訊</a>　<a href="https://www.taipower.com.tw/content/new_info/new_info_in.aspx?LinkID=27">各機組發電量</a>  </div>-->
+    <div class="title" style="clear:both; position:absolute; top:4px; left:0px;">即時電力資訊</div>
+    <div style="position:absolute; top:0px; left:0px; width:240px; height:170px;"></div>
+    </div>
+    <script type="text/javascript">
+        //<![CDATA[
+        var loaNow = parseFloat(loadInfo[0].replace(/\,/, ''));
+        var maxLoaPre = parseFloat(loadInfo[1].replace(/\,/, ''));
+        var vscale1 = loaNow + 0;
+        var maxSup = parseFloat(loadInfo[2].replace(/\,/, ''));
+
+        var maxSupCeil = makeCeiling(Math.round(maxSup));
+        var stage_1 = maxSup - (vscale1 * chartStageArgs[0]);
+        var stage_2 = maxSup - (vscale1 * chartStageArgs[1]);
+        var stage_3 = maxSup - chartStageArgs[2];
+        var stage_4 = maxSup - chartStageArgs[3];
+
+        var updTimeTxt = loadInfo[3];
+        updTimeTxt = String(updTimeTxt).substring(0, String(updTimeTxt).length - 2);
+        //var startVal   = parseInt(startValStr);
+        //var startValPerc   = parseInt(startValPerc);
+        var startVal = maxSup - ((maxSup - stage_1) * 2);
+        //var startVal = maxSup * 0.6;
+        if (startVal >= loaNow - 200) { startVal = loaNow - 200; }
+        //var loadPreColor = "#FFFF00";
+        var loadPreColor = "#0033FF";
+        var maxSupColor = "#0033FF";
+        var loadReserveRateNow = ((maxSup - loaNow) / loaNow) * 100;
+        var loadReserveNow = maxSup - loaNow;
+        if (loadReserveRateNow >= 10.00) {
+            //var loadStatusStr = "供電充裕";var loadStatusClr = "#009900";
+            var loadStatusClr = "#009900";
+        } else if (loadReserveRateNow < 10.00 && loadReserveRateNow > 6.00) {
+            //var loadStatusStr = "供電吃緊";var loadStatusClr = "#cc9900";
+            var loadStatusClr = "#f1c232";
+        } else if (loadReserveRateNow <= 6.00 && loadReserveNow > 90.0) {
+            //var loadStatusStr = "供電警戒";var loadStatusClr = "#ff6600";
+            var loadStatusClr = "#ff8822";
+        } else if (loadReserveNow <= 90.0 && loadReserveNow > 50.0) {
+            //var loadStatusStr = "限電警戒";var loadStatusClr = "#ff0000";
+            var loadStatusClr = "#ff0000";
+        } else if (loadReserveNow <= 50.0) {
+            //var loadStatusStr = "限電準備";var loadStatusClr = "#000000";
+            var loadStatusClr = "#000000";
+        } else {
+            var loadStatusStr = "";
+        }
+
+        var userate = (loaNow / maxSup * 100).toFixed(0);
+        var start_userate = (startVal / maxSup * 100).toFixed(0);
+        var gaugeChart = AmCharts.makeChart("lgg_chartdiv", {
+            "type": "gauge",
+            "theme": "light",
+            "marginRight": 40,
+            "marginLeft": 40,
+            "minRadius": 60,
+            "fontFamily": "Microsoft JhengHei",
+            "axes": [{
+                "axisThickness": 1,
+                "axisAlpha": 0.1,
+                "tickAlpha": 0.0,
+                "startAngle": -80,
+                "endAngle": 80,
+                "startValue": startVal,
+                "gridCount": 2,
+                //"valueInterval": 50,
+                //"minorTickInterval": 10,
+                //"labelOffset": -5,
+                "labelFrequency": 2,
+                "labelsEnabled": false,
+                //"unit": "萬瓩",
+                "centerY": 0, // 主圖上下高度
+                "centerX": 0, // 主圖左右位置
+                "bands": [{
+                    // Stage 1
+                    "color": colrs[0],
+                    "color": "#80d024",
+                    "endValue": stage_1.toFixed(1),
+                    "innerRadius": "85%",
+                    "startValue": startVal
+                }, {
+                    // Stage 2
+                    "color": colrs[1],
+                    "color": "#f4e034",
+                    "endValue": stage_2.toFixed(1),
+                    "innerRadius": "85%",
+                    "startValue": stage_1.toFixed(1)
+                }, {
+                    // Stage 3
+                    "color": colrs[2],
+                    "color": "#ffb133",
+                    "endValue": stage_3.toFixed(1),
+                    "innerRadius": "85%",
+                    "startValue": stage_2.toFixed(1)
+                }, {
+                    // Stage 4
+                    "color": colrs[3],
+                    "color": "#ff3e32",
+                    "endValue": stage_4.toFixed(1),
+                    "innerRadius": "85%",
+                    "startValue": stage_3.toFixed(1)
+                }, {
+                    // Stage 5
+                    "color": colrs[4],
+                    "color": "#323232",
+                    "endValue": maxSup.toFixed(1),
+                    "innerRadius": "85%",
+                    "startValue": stage_4.toFixed(1)
+                }],
+                "bottomTextFontSize": 12,
+                "bottomTextColor": "#3333FF",
+                "bottomTextYOffset": -45,
+                "endValue": maxSup.toFixed(0)
+            }],
+            "arrows": [{
+                "startWidth": 5,
+                "nailRadius": 0,
+                "color": "dimgray",
+                "innerRadius": "30%",
+                "value": loaNow.toFixed(1)
+            }],
+            "allLabels": [{
+                "text": "目前用電量 ",
+                "bold": false,
+                "color": "gray",
+                "size": 14,
+                "x": 34,
+                "y": 142
+            }, {
+                "text": loaNow.toFixed(1),
+                "bold": true,
+                "color": loadStatusClr,
+                "size": 20,
+                "x": 111,
+                "y": 136
+            }, {
+                "text": " 萬瓩",
+                "bold": false,
+                "color": "gray",
+                "size": 14,
+                "x": 179,
+                "y": 142
+            }, {
+                "text": updTimeTxt,
+                "bold": false,
+                "color": "gray",
+                "size": 12,
+                "align": "right",
+                "x": 236,
+                "y": 14
+            }, {
+                "text": startVal.toFixed(0)/* + "萬瓩"*/,
+                "bold": false,
+                "color": "gray",
+                "size": 10,
+                "x": 36,
+                "y": 118
+            }, {
+                "text": 'MAX',
+                "bold": false,
+                "color": "gray",
+                "size": 9,
+                "x": 158,
+                "y": 118
+            }, {
+                "text": maxSup.toFixed(0)/* + "萬瓩"*/,
+                "bold": false,
+                "color": "gray",
+                "size": 10,
+                "x": 184,
+                "y": 118
+            }
+            ]
+        });
+        setInterval(reTick, 30000);
+        function reTick() {
+            if (gaugeChart) {
+                location.reload(true);
+            }
+        }
+        function makeCeiling(vnum) { var nCeil = (10 - (vnum % 10)); return (nCeil + vnum); }
+//function makeCeiling(vnum){ return vnum; }
+
+//]]>
+
+    </script>
+
+
+</body></html>

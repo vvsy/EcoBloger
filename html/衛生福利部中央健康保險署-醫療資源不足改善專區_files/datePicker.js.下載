@@ -1,0 +1,2 @@
+define(function(){function main(env,opt,file){var $set={todayButton:new Date(),debug:false}
+$.extend($set,opt);var $this=$(env),$date=$this.find('[type="date"]');$date.each(function(i,n){$date.attr('type','text');$(n).datepicker($set);});if($set.debug){console.log('預設值:',$set);console.log('檔案 '+file+'.js 已順利執行。');}}return main;});
